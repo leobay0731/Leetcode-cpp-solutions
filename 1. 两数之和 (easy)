@@ -30,3 +30,33 @@ public:
         return arr;
     }
 };
+
+//代码2：和1思路一样都是暴力求解，不过不用构建数组
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        for(int i = 0; i<nums.size(); i++){
+            for(int j = i+1; j<nums.size();j++){
+                if(nums[i]+nums[j]==target){
+                    return {i,j};
+                }
+            }
+        }
+    return {}; //未找到解时候的兜底，必须有，否则编译器会报错【error: control reaches end of non-void function [-Werror=return-type]】
+    }
+};
+
+//代码3：运用哈希表
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> hashtable; // 只是创建一个空的哈希表，没有任何数据
+        for (int i = 0; i < nums.size(); ++i) {
+            auto it = hashtable.find(target - nums[i]); // 先查补数
+            if (it != hashtable.end()) {
+                return {it->second, i}; // 找到就返回，不用继续存
+            }
+            hashtable[nums[i]] = i; // 没找到才把当前元素存进去
+        }
+    }
+}；
