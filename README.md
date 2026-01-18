@@ -26,7 +26,7 @@ Trees & Graphs
 
 📈 Progress：
 
-🟢 Easy: 0
+🟢 Easy: 3
 
 🟡 Medium: 0
 
